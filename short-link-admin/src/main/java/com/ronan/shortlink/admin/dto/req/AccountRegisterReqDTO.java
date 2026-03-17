@@ -38,4 +38,9 @@ public class AccountRegisterReqDTO {
      */
     private String mail;
 
+    /**
+     * 分组ID
+     */
+    private String groupId;
+
 }

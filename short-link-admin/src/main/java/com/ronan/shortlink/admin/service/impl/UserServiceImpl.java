@@ -2,10 +2,8 @@ package com.ronan.shortlink.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baosight.web.core.exception.ApiException;
-import com.ronan.common.utils.Assert;
 import com.ronan.shortlink.admin.convert.UserConvert;
 import com.ronan.shortlink.admin.dao.entity.User;
-import com.ronan.shortlink.admin.dao.manager.GroupManager;
 import com.ronan.shortlink.admin.dao.manager.UserManager;
 import com.ronan.shortlink.admin.dto.req.AccountRegisterReqDTO;
 import com.ronan.shortlink.admin.error.UserErrorCode;
@@ -52,12 +50,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             User user = UserConvert.INSTANCE.toEntity(register);
             user.setDeleted(Boolean.FALSE);
             userManager.saveUser(user);
-            // 保存分组信息
-
+            groupService.saveGroup(user.getUsername(), "默认分组");
         } finally {
             lock.unlock();
         }
-
 
         return Boolean.TRUE;
     }

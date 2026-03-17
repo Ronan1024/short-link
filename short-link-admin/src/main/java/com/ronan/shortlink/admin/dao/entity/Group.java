@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baosight.database.mybatis.handler.BasePO;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +14,7 @@ import lombok.EqualsAndHashCode;
  * @TableName group
  */
 @Data
+@Builder
 @TableName(value ="group")
 @EqualsAndHashCode(callSuper = true)
 public class Group  extends BasePO {
